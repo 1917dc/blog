@@ -6,6 +6,7 @@ description: things that i like, favourite musics, shows, books, etc.
 nav: true
 nav_order: 1
 ---
+
 ## Favourite albums:
 
 - OK Computer (Radiohead)

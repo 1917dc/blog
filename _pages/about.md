@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: 
+subtitle:
 
 profile:
   align: right
@@ -21,6 +21,6 @@ I'm really into Shows that are relatable for me as a person, it's like I can rea
 I really like music, and discoreving new music is a hobbie for me, and one of my favourite hobbies.
 [Spotify](https://open.spotify.com/user/xtremegames53)
 
-There is much more to write down here, but I dont see any point on doing it right now. 
+There is much more to write down here, but I dont see any point on doing it right now.
 
 I have ADHD and Autism, and this really molded the way I interact and behave around people of my life.

@@ -3,8 +3,8 @@
 # -----------------------------------------------------------------------------
 
 title: Earthmover # the website title (if blank, full name will be used instead)
-first_name: Luiz 
-middle_name: G. 
+first_name: Luiz
+middle_name: G.
 last_name:
 email: luizgust.x@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
@@ -39,7 +39,7 @@ repo_trophies:
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: false 
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -132,7 +132,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Earthmover # blog_name will be displayed in your blog page
-blog_description: 
+blog_description:
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -160,7 +160,7 @@ giscus:
   lang: en
 
 # Disqus comments (DEPRECATED)
-disqus_shortname:  # put your disqus shortname
+disqus_shortname: # put your disqus shortname
 # https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # External sources.
