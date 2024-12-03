@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 1917dc</title>
-    <link>1917dc.github.io/post/</link>
+    <link>https://1917dc.github.io/post/</link>
     <description>Recent content in Posts on 1917dc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© [Luiz G.](https://github.com/1917dc)</copyright>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="1917dc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://1917dc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
