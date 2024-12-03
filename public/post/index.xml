@@ -2,19 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 1917dc</title>
-    <link>//localhost:1313/post/</link>
+    <link>1917dc.github.io/post/</link>
     <description>Recent content in Posts on 1917dc</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>© [Luiz G.](https://github.com/1917dc)</copyright>
-    <lastBuildDate>Mon, 02 Dec 2024 21:55:16 -0300</lastBuildDate>
-    <atom:link href="//localhost:1313/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>02122024 Rust</title>
-      <link>//localhost:1313/post/02122024-rust/</link>
-      <pubDate>Mon, 02 Dec 2024 21:55:16 -0300</pubDate>
-      <guid>//localhost:1313/post/02122024-rust/</guid>
-      <description>Why I&amp;rsquo;m learning Rust? Basically, I was planning on studying compilers, interpreters and how programming languages work on the low level part.&#xA;I tought that Rust was a good choice because it has large and active open source community, and it&amp;rsquo;s simpler than C and C++. I had sometime in last year learning C, was a pain in the ass, but I recognize the impact that it had in my understanding of how a computer memory works on the low level.</description>
-    </item>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="1917dc.github.io/post/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
