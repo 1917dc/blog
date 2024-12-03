@@ -1,4 +1,4 @@
-baseURL = "1917dc.github.io/"
+baseURL = "https://1917dc.github.io/"
 theme = "risotto"
 title = "1917dc"
 author = "Luiz G."
