@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><title>02122024 Rust &ndash; 1917dc</title>
+<meta name="description" content="a space for me on internet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" integrity="sha512-IW0nhlW5MgNydsXJO40En2EoCkTTjZhI3yuODrZIc8cQ4h1XcF53PsqDHa09NqnkXuIe0Oiyyj171BqZFwISBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<link rel="stylesheet" href="//localhost:1313/css/palettes/base16-black-metal.css">
+<link rel="stylesheet" href="//localhost:1313/css/risotto.css">
+<link rel="stylesheet" href="//localhost:1313/css/custom.css">
+
+
+
+
+
+
+<link rel="manifest" href="//localhost:1313/site.webmanifest">
+
+
+
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><nav class="page__nav main-nav">
+    <ul>
+      <li class="nomarker"><h1 class="page__logo"><a href="//localhost:1313/" class="page__logo-inner">1917dc</a></h1></li>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="//localhost:1313/about/" title="About">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="//localhost:1313/post/" title="Posts">Posts</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>02122024 Rust</h1>
+    </header>
+    <div class="content__body">
+        <h1 id="why-im-learning-rust">Why I&rsquo;m learning Rust?</h1>
+<p>Basically, I was planning on studying compilers, interpreters and how programming languages work on the low level part.</p>
+<p>I tought that Rust was a good choice because it has large and active open source community, and it&rsquo;s simpler than C and C++. I had sometime in last year learning C, was a pain in the ass, but I recognize the impact that it had in my understanding of how a computer memory works on the low level.</p>
+<ul>
+<li>
+<p>I&rsquo;m learning Rust using the <a href="https://doc.rust-lang.org/book/title-page.html">official book</a>.</p>
+</li>
+<li>
+<p>I read until the charpter <a href="https://doc.rust-lang.org/book/ch03-05-control-flow.html">3.5</a></p>
+</li>
+<li>
+<p>As a summary, today e learned:</p>
+</li>
+</ul>
+<ol>
+<li>Data Types;</li>
+<li>Functions;</li>
+<li>Variables &amp; Mutability</li>
+</ol>
+<p>Rust has a pretty interesting approach to variables, unlike C, Rust don&rsquo;t let all variables be mutable. In a deeper level it offers more memory safe code, leading to lesser bugs on runtime.</p>
+<h2 id="guessing-game">Guessing game:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::io;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> std::cmp::Ordering;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">use</span> rand::Rng;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// rust uses snake case as default
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    println!(<span style="color:#e6db74">&#34;Secret number game!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> secret_number <span style="color:#f92672">=</span> rand::thread_rng().gen_range(<span style="color:#ae81ff">1</span><span style="color:#f92672">..=</span><span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> guess <span style="color:#f92672">=</span> String::new();
+</span></span><span style="display:flex;"><span>        println!(<span style="color:#e6db74">&#34;The secret number is: </span><span style="color:#e6db74">{secret_number}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>        println!(<span style="color:#e6db74">&#34;Type a number:&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        io::stdin()
+</span></span><span style="display:flex;"><span>            .read_line(<span style="color:#f92672">&amp;</span><span style="color:#66d9ef">mut</span> guess)
+</span></span><span style="display:flex;"><span>            .expect(<span style="color:#e6db74">&#34;Failed to read the line!&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// match is basically a switch case
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// in this case i&#39;m using him to handle exceptions
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// just like on the line 32
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// the parse method returns a **enum** 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// it can be &#34;Ok&#34; or &#34;Err&#34;, using the method 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// match i can handle the excpetion in the case of either are returned 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// &#34;Err(_)&#34; is basically a catch all
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">match</span> guess.trim().parse() {
+</span></span><span style="display:flex;"><span>            Ok(num) <span style="color:#f92672">=&gt;</span> num,
+</span></span><span style="display:flex;"><span>            Err(_) <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">continue</span>,
+</span></span><span style="display:flex;"><span>        }; 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">match</span> guess.cmp(<span style="color:#f92672">&amp;</span>secret_number) {
+</span></span><span style="display:flex;"><span>            Ordering::Less <span style="color:#f92672">=&gt;</span> println!(<span style="color:#e6db74">&#34;Too small!&#34;</span>),
+</span></span><span style="display:flex;"><span>            Ordering::Greater <span style="color:#f92672">=&gt;</span> println!(<span style="color:#e6db74">&#34;Too big!&#34;</span>),
+</span></span><span style="display:flex;"><span>            Ordering::Equal <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>                println!(<span style="color:#e6db74">&#34;You win!&#34;</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            },
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="learning-how-variables-work">Learning how variables work:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// incorrect way to re-declare variables:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// x = x (only works for mutable variables)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;x is </span><span style="color:#e6db74">{x}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// shadowing variables
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// I can also do let x = x * 5!!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>;
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;x is </span><span style="color:#e6db74">{x}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// constants are **always** immutable, unlike variables.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">THREE_HOURS_IN_SECONDS</span>: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">60</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inner scope and shadowing variables:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// this is an inner scope
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">let</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>        println!(<span style="color:#e6db74">&#34;x is </span><span style="color:#e6db74">{x}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// the main difference between using shadowing and mut
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// is that mutable variables can be changed at any time,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// while regular variables return to being immutable after modifications.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// basically, we are creating a new variable but with the same name.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    println!(<span style="color:#e6db74">&#34;x is </span><span style="color:#e6db74">{x}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> spaces <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;   &#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> spaces <span style="color:#f92672">=</span> spaces.len();
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;spaces len is </span><span style="color:#e6db74">{spaces}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// incorrect way to re-declare variables:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// let mut spaces_mut = &#34;   &#34;;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// spaces_mut = spaces_mut.len();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">//
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// **compilation error, because it is not possible to mutate the variable type.**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// this is only possible with regular variables because they are being
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// re-created in every re-declaration.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// I need to define the type beforehand
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// let guess = &#34;42&#34;.parse().expect(&#34;Failed to parse!&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> guess: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;42&#34;</span>.parse().expect(<span style="color:#e6db74">&#34;Failed to parse!&#34;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="array-study">Array study:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> counter: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> result <span style="color:#f92672">=</span> <span style="color:#66d9ef">loop</span> {
+</span></span><span style="display:flex;"><span>        counter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> counter <span style="color:#f92672">==</span> <span style="color:#ae81ff">10</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span> counter;
+</span></span><span style="display:flex;"><span>        } 
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;result is </span><span style="color:#e6db74">{result}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> number: <span style="color:#66d9ef">u32</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;number is </span><span style="color:#e6db74">{number}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> number <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> {
+</span></span><span style="display:flex;"><span>        number <span style="color:#f92672">-=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;number has reached </span><span style="color:#e6db74">{number}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> number <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span> {
+</span></span><span style="display:flex;"><span>        number <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;number has reached </span><span style="color:#e6db74">{number}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#66d9ef">mut</span> index: <span style="color:#66d9ef">usize</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> arr: [<span style="color:#66d9ef">u32</span>; <span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> index <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span> {
+</span></span><span style="display:flex;"><span>        println!(<span style="color:#e6db74">&#34;element is </span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#34;</span>, arr[index]);
+</span></span><span style="display:flex;"><span>        index <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// instead of looping with a size of 5, which can cause errors,
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// I can loop directly over the collection `arr`, as follows:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> element <span style="color:#66d9ef">in</span> arr {
+</span></span><span style="display:flex;"><span>        println!(<span style="color:#e6db74">&#34;element is </span><span style="color:#e6db74">{element}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    println!(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> element <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">..</span><span style="color:#ae81ff">4</span>).rev() {
+</span></span><span style="display:flex;"><span>        println!(<span style="color:#e6db74">&#34;element is </span><span style="color:#e6db74">{element}</span><span style="color:#e6db74">&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th><img src="/thinking_monke.jpg" alt="thinking_monke.jpg"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>today was a very productive day, I studied for 2.5 hours</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    <span class="about__logo" role="img">^-^</span>&nbsp;
+    
+<h1 class="about__title">1917dc</h1>
+<p class="about__description">a space for me on internet</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/1917dc" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="mailto:luizgust.x@gmail.com" rel="me" aria-label="Email" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>First steps on learning Rust programming language.</p>
+    
+        <p>
+            By Luiz, 
+            2024-12-02
+        </p>
+    
+
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+             
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright">© <a href="https://github.com/1917dc">Luiz G.</a></p>
+</footer>
+
+        </div>
+    </body>
+
+</html>
